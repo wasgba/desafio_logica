@@ -11,28 +11,23 @@ function classificarHeroi(xp) {
     return "XP inválido. O XP deve ser maior ou igual a 0.";
   }
 
-  // Classifica o herói com base nos intervalos de XP
-  if (xp < 1000) {
-    return "Ferro";
-  } else if (xp <= 2000) {
-    return "Bronze";
-  } else if (xp <= 3000) {
-    return "Prata";
-  } else if (xp <= 4000) {
-    return "Ouro";
-  } else if (xp <= 5000) {
-    return "Platina";
-  } else if (xp <= 6000) {
-    return "Diamante";
-  } else if (xp <= 7000) {
-    return "Mestre";
-  } else if (xp <= 8000) {
-    return "Grão-mestre";
-  } else if (xp <= 9000) {
-    return "Desafiante";
-  } else {
-    return "Lendário";
-  }
+  // Define os intervalos de XP e suas classificações
+  const classificacoes = [
+    { limite: 1000, nome: "Ferro" },
+    { limite: 2000, nome: "Bronze" },
+    { limite: 3000, nome: "Prata" },
+    { limite: 4000, nome: "Ouro" },
+    { limite: 5000, nome: "Platina" },
+    { limite: 6000, nome: "Diamante" },
+    { limite: 7000, nome: "Mestre" },
+    { limite: 8000, nome: "Grão-mestre" },
+    { limite: 9000, nome: "Desafiante" },
+    { limite: Infinity, nome: "Lendário" }
+  ];
+
+  // Encontra a classificação correta usando find
+  const classificacao = classificacoes.find(c => xp < c.limite);
+  return classificacao ? classificacao.nome : "Classificação não encontrada";
 }
 
 // Exemplos de uso
